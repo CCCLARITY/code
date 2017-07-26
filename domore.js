@@ -15,7 +15,6 @@ var server = http.createServer(function(request, response){
 	//从这里开始看，上面不要看
  	if(path === '/index'){
  		response.setHeader('Content-Type','text/html;charset="utf-8"')
- 		// var string = fs.readFileSync('./index.html','utf-8')
  		response.end(`
  			<!DOCTYPE html>
 			<html>
@@ -24,7 +23,7 @@ var server = http.createServer(function(request, response){
 			</head>
 			<body>
 				
-				<ul>
+				<ul id = "ct">
 					<li>内容1</li>
 					<li>内容2</li>
 				</ul>
@@ -39,7 +38,6 @@ var server = http.createServer(function(request, response){
  		`)
  	}else if(path === '/style'){
  		response.setHeader('Content-Type','text/css')
- 		// var cssString = fs.readFileSync('./style.css','utf-8')
  		response.end(`
  			ul li{
 				list-style: none;
@@ -66,10 +64,10 @@ var server = http.createServer(function(request, response){
  		`)
  	}else if(path === '/taskmain12'){
  		response.setHeader('Content-Type','text/javascript')
- 		// var jsString = fs.readFileSync('./taskmain12.js','utf-8')
  		response.end(`
  			var b = document.getElementById('btn')
 			var ul = document.getElementsByTagName('ul')[0]
+			var ct = document.getElementById('ct')
 			var page = 4
 			b.onclick = function(){
 				ajaxGet('/page-' + page, function(result){
@@ -101,12 +99,20 @@ var server = http.createServer(function(request, response){
 				httpRequest.send()
 				return httpRequest
 			}
+			ct.addEventListener('mouseover',function(e){
+				if (e.target.tagName.toLowerCase() === 'li') {
+				  e.target.classList.add('hover')
+				}
+			})
+			ct.addEventListener('mouseout',function(e){
+				if (e.target.tagName.toLowerCase() === 'li') {
+				  e.target.classList.remove('hover')
+				}
+			})
  		`)
  	}else if(path === '/page-4'){
  		response.setHeader('Content-Type', 'text/javascript;charset="utf-8"')
  		response.end(`
- 			var liList = document.getElementsByTagName('li')
- 			console.log(liList.length)
  		`)
  		
  	}else{
