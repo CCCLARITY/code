@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>进阶task-14-8</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		.jrew .mainlist, .jrew .mainlist .childlist{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			
+		}
+		.jrew{
+			background-color: red;
+			width: 150px;
+			padding: 0;
+		}
+		.jrew>li{
+			border: 1px solid #ccc;
+			font-size: 16px;
+			padding: 5px 5px;
+			cursor: pointer;
+		}
+		.jrew>li>a{
+			color: #fff;
+		}
+		.jrew>li>span{
+			float: right;
+			color: #fff;
+		}
+		.jrew .mainlist{
+			position: relative;
+		}
+		.jrew .mainlist .childlist{
+			position: absolute;
+			left: 150px;
+			top: 0;
+			display: none;
+			width: 150px;
+			padding: 0px;
+		}
+		.jrew .mainlist .childlist a{
+			margin-left: 10px;
+		}
+		.jrew .mainlist .childlist li{
+			width: 50%;
+			border-bottom: 1px solid #ccc;
+			font-size: 16px;
+			padding: 5px 0px 5px 15px;
+		}
+		
+		.jrew .mainlist .childlist li:nth-child(odd){
+			float: right;
+		}
+		.clearfix::after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.jrew .mainlist .active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="jrew">
+			<li class="mainlist clearfix">
+				<a class="listtitle" href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="childlist">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+					<li><a href="">钻石</a></li>
+					<li><a href="">琥珀</a></li>
+					<li><a href="">和田</a></li>
+					<li><a href="">琥珀</a></li>
+				</ul>
+			</li>
+			<li class="mainlist clearfix">
+				<a class="listtitle" href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="childlist">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="mainlist clearfix">
+				<a class="listtitle" href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="childlist">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+				</ul>
+			</li>
+			<li class="mainlist clearfix">
+				<a class="listtitle" href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="childlist">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="mainlist clearfix">
+				<a class="listtitle" href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="childlist">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">玉石</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">水晶</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		
+		var listLength = $('.jrew .mainlist').length
+		for(var i = 0; i< listLength; i++){
+			$('.jrew .mainlist').eq(i).hover(
+				function(){
+					$(this).find('.childlist').addClass('active')
+				},
+				function(){
+					$(this).find('.childlist').removeClass('active')
+				}
+			);
+		}
+		
+
+	</script>
+
+</body>
+</html>
