@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<style>
+li{
+  list-style: none;
+}
+ul{
+  padding: 0;
+}
+.content{
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ccc;
+}
+.container{
+  margin-top: 5px;
+}
+.button{
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto;
+}
+.hover{
+  background: green;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+  <ul class="ct">
+    <li class="content">内容1</li>
+    <li class="content">内容2</li>
+  </ul>
+  <div class="container">
+    <div class="button">加载更多</div>
+  </div>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+
+    var $ct = $('.ct')
+    $ct.on('mouseenter', 'li', function(){
+      $(this).addClass('hover')
+    })
+    $ct.on('mouseleave', 'li', function(){
+      $(this).removeClass('hover')
+    })
+
+    $('.button').on('click',function(){
+      $.ajax({
+        url: '/hello',
+        method: 'get',
+      }).done(function(ret){
+        var node;
+        for(var i=0;i<ret.length;i++){
+          node = $('<li></li>');
+          node.html(ret[i]);
+          node.addClass('content');
+          $('ul').append(node);
+        }
+      }).fail(function(){
+        console.log('error');
+      });
+    });
+  </script>
+</body>
+</html>
